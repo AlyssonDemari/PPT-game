@@ -1,5 +1,5 @@
 
-<h1><a target="_blank" href="hhttps://alyssondemari.github.io/PPT-game/">Jokenpo</a></h1>
+<h1><a target="_blank" href="https://alyssondemari.github.io/PPT-game/">Jokenpo</a></h1>
 
 ### Feito com:
 
