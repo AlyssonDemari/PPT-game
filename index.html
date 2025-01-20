@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
+
+        @import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
+
+        h1{
+            font-family: "Jersey 10", serif;
+            font-weight: 100;
+        }
+
+        span{
+            color: red;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            font-family: "Red Hat Text", serif;
+        }
+
+        main{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .img-jogada{
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .player-comp{
+            transform: rotate(180deg);
+        }
+
+        select{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Player <span id="player">0</span> X Maquina <span id="maquina">0</span></h1>
+    </header>
+    <main>
+        <div class="img-jogada">
+            <img class="player-comp" src="images/standiBy.png" alt="">
+            <img class="player" src="images/standiBy.png" alt="">
+        </div>
+        <select name="escolhas" id="escolhas">
+            <option value="Pedra">Pedra</option>
+            <option value="Papel">Papel</option>
+            <option value="Tesoura">Tesoura</option>
+        </select>
+        <input type="button" value="Jogar">
+        
+        <p class="vencedor">VENCEDOR:</p>
+    </main>
+
+
+    <script>
+        const escPlayer = document.querySelector('select')
+        const buttonStart = document.querySelector("input")
+        let imgComp = document.querySelector('.player-comp')
+        let imgPlayer = document.querySelector('.player')
+        const vencedor = document.querySelector('.vencedor')
+        const placarPlayer = document.querySelector('#player')
+        const placarComp = document.querySelector('#maquina')
+        placarPlayer.innerHTML = 0
+        placarComp.innerHTML = 0
+
+        const convertComp = (repetidor) =>{
+            compPlayer = Math.floor(Math.random() * 3)
+            if(compPlayer == 0){
+                imgComp.src = 'images/winRock.png'
+                compPlayer = "Pedra"
+            }else if(compPlayer == 1){
+                imgComp.src = 'images/winsScissor.png'
+                compPlayer = "Tesoura"
+            }else{
+                imgComp.src = 'images/winPaper.png'
+                compPlayer = "Papel"
+                
+            }
+            compararEscolha(compPlayer, escPlayer)
+        }
+        buttonStart.addEventListener('click', iniciarJogo)
+
+        const iniciarJogo = () => {
+            setInterval(() =>{
+                compararEscolha()
+            }, 3000)
+        }
+
+        const compararEscolha = () => {
+        let contagemPlayer = parseInt(placarPlayer.innerHTML);
+        let contagemComp = parseInt(placarComp.innerHTML);
+
+        switch(escPlayer.value){
+            case "Pedra":
+                imgPlayer.src = 'images/winRock.png'
+                switch(compPlayer){
+                    case "Tesoura":
+                        imgComp.src = 'images/loseScissor.png';
+                        placarPlayer.innerHTML = contagemPlayer + 1;
+                        return vencedor.innerHTML = 'Player venceu';
+                    break
+
+                    case "Papel":
+                        imgPlayer.src = 'images/loseRock.png';
+                        placarComp.innerHTML = contagemComp + 1
+                        return vencedor.innerHTML = 'Máquina venceu!';
+                    break
+
+                    case "Pedra":
+                        imgComp.src = 'images/loseRock.png';
+                        imgPlayer.src = 'images/loseRock.png';
+                        return vencedor.innerHTML = 'O jogo empatou!';
+                }
+            break
+
+            case "Tesoura":
+                imgPlayer.src = 'images/winsScissor.png'
+                switch(compPlayer){
+                    case "Tesoura":
+                        imgComp.src = 'images/loseScissor.png'
+                        imgPlayer.src = 'images/loseScissor.png'
+                        return vencedor.innerHTML = 'O jogo empatou!'
+                    break
+
+                    case "Papel":
+                        imgComp.src = 'images/losePaper.png'
+                        placarPlayer.innerHTML = contagemPlayer + 1
+                        return vencedor.innerHTML = 'Player venceu!'
+                    break
+
+                    case "Pedra":
+                        imgPlayer.src = 'images/loseScissor.png'
+                        placarComp.innerHTML = contagemComp + 1
+                        return vencedor.innerHTML = "Máquina venceu!"
+                }
+            break
+
+            case "Papel":
+                imgPlayer.src = 'images/winPaper.png'
+                switch(compPlayer){
+                    case "Tesoura":
+                        imgPlayer.src = 'images/losePaper.png'
+                        placarComp.innerHTML = contagemComp + 1
+                        return vencedor.innerHTML = "Máquina venceu!"
+                    break
+
+                    case "Papel":
+                        imgComp.src = 'images/losePaper.png'
+                        imgPlayer.src = 'images/losePaper.png'    
+                        return vencedor.innerHTML = 'O jogo empatou!'
+                    break
+
+                    case "Pedra":
+                        imgComp.src = 'images/loseRock.png'
+                        placarPlayer.innerHTML = contagemPlayer + 1
+                        return vencedor.innerHTML = 'Player venceu!'
+                }
+        }
+    }
+
+
+
+        
+    </script>
+</body>
+</html>
