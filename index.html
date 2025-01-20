@@ -93,13 +93,8 @@
             }
             compararEscolha(compPlayer, escPlayer)
         }
-        buttonStart.addEventListener('click', iniciarJogo)
+        buttonStart.addEventListener('click', convertComp)
 
-        const iniciarJogo = () => {
-            setInterval(() =>{
-                compararEscolha()
-            }, 3000)
-        }
 
         const compararEscolha = () => {
         let contagemPlayer = parseInt(placarPlayer.innerHTML);
