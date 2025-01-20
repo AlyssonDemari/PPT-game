@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Jersey+25&display=swap');
+
+h1{
+    font-family: "Jersey 25", serif;
+    font-weight: 600;
+}
+
+span{
+    color: red;
+    font-weight: 600;
+}
+body{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    font-family: "Red Hat Text", serif;
+    background-color: gray;
+}
+
+main{
+    background: url(images/bg.jpg) no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-radius: 12px;  
+}
+
+article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px 75px;
+    border-radius: 20px;     
+ }
+
+.img-jogada{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 80%;
+}
+
+.player-comp{
+    transform: rotate(180deg);
+}
+
+select{
+    margin-top: 20px;
+    -webkit-appearance: none;
+    -moz-appearance: none; 
+    appearance: none; 
+    position: relative;
+    width: 200px;
+    height: 50px;
+    border: none;
+    overflow: hidden;
+    margin: 30px 0px;
+    background-color: gray;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+option{
+    font-size: 30px;
+    border: none;
+}
+
+select option:nth-child(1) {
+    position: absolute;
+    transform: translate(-50%, 0%);
+    left: 50%;
+    color: red;
+    font-weight: bold;
+}
+
+select option:nth-child(2) {
+    position: absolute;
+    transform: translate(0%, 0%);
+    left: 0%;
+    color: red;
+    font-weight: bold;
+}
+select option:nth-child(3) {
+    position: absolute;
+    transform: translate(-100%, 0%);
+    left: 100%;
+    color: red;
+    font-weight: bold;
+}
+
+input[type='button']{
+    padding: 10px 30px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    transition: 1s all ease-in;
+    background-image: linear-gradient(to top, #f73809, #feb47b);
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    select{
+        margin-top: 20px;
+        -webkit-appearance: none;
+        -moz-appearance: none; 
+        appearance: none; 
+        position: none;
+        width: 200px;
+        height: 50px;
+        border: none;
+        overflow: hidden;
+        margin: 30px 0px;
+        background-color: gray;
+        border-radius: 20px;
+        padding: 5px;
+    }
+    
+    option{
+        font-size: 30px;
+        border: none;
+    }
+    
+    select option:nth-child(1) {
+        position: absolute;
+        transform: translate(-50%, 0%);
+        left: 50%;
+        color: red;
+        font-weight: bold;
+    }
+    
+    select option:nth-child(2) {
+        position: absolute;
+        transform: translate(0%, 0%);
+        left: 0%;
+        color: red;
+        font-weight: bold;
+    }
+    select option:nth-child(3) {
+        position: absolute;
+        transform: translate(-100%, 0%);
+        left: 100%;
+        color: red;
+        font-weight: bold;
+    }
+    
+}
